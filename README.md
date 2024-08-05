@@ -5,3 +5,20 @@
 
 ![Imagen de WhatsApp 2024-08-05 a las 11 29 37_b1f316ec](https://github.com/user-attachments/assets/6b0277a7-9758-4402-a478-95d58ea0f5db)
 
+
+
+####LINEA DE CODIGO AGREGADO PARA EL BOTON#####
+<div className="label">Hora inicio:</div>
+            {isPlay ? (
+              <div>{startTime.toLocaleTimeString()}</div>
+            ) : (
+              <button onClick={handlePlay}>Play</button>
+            )}
+          </div>
+          <div className="column">
+            <div className="label">Hora final:</div>
+            {isPlay ? (
+              <button onClick={handlePause}>Pause</button>
+            ) : (
+              <div>{endTime ? endTime.toLocaleTimeString() : ''}</div>
+            )}
