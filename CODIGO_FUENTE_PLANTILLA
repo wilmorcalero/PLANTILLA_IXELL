@@ -1,0 +1,776 @@
+import React, { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [isPlay, setIsPlay] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+
+  const handlePlay = () => {
+    setIsPlay(true);
+    setStartTime(new Date());
+  };
+
+  const handlePause = () => {
+    setIsPlay(false);
+    setEndTime(new Date());
+  };
+
+  return (
+    <div className="container">
+      <h1>REPORTE DE INSPECCIÓN</h1>
+      <div className="form">
+        <div className="section">
+          <div className="label">Nombre:</div>
+          <input type="text" />
+        </div>
+        <div className="section">
+          <div className="label">Motor:</div>
+          <input type="text" />
+        </div>
+        <div className="section">
+          <div className="label">Marca:</div>
+          <input type="text" />
+        </div>
+        <div className="section">
+          <div className="label">Modelo:</div>
+          <input type="text" />
+        </div>
+        <div className="section">
+          <div className="label">Placa #:</div>
+          <input type="text" />
+        </div>
+        <div className="section">
+          <div className="label">Aceite:</div>
+          <input type="text" />
+        </div>
+        <div className="section">
+          <div className="label">Falla Reportada:</div>
+          <textarea />
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="label">DATOS DEL VEHÍCULO</div>
+        <div className="row">
+          <div className="column">
+            <div className="label">Vin:</div>
+            <input type="text" />
+          </div>
+          <div className="column">
+            <div className="label">Año:</div>
+            <input type="text" />
+          </div>
+          <div className="column">
+            <div className="label">Cilindraje:</div>
+            <input type="text" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="column">
+            <div className="label">F/AC:</div>
+            <input type="checkbox" />
+          </div>
+          <div className="column">
+            <div className="label">F/COMB:</div>
+            <input type="checkbox" />
+          </div>
+          <div className="column">
+            <div className="label">F/AIRE:</div>
+            <input type="checkbox" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="column">
+            <div className="label">Hora inicio:</div>
+            {isPlay ? (
+              <div>{startTime.toLocaleTimeString()}</div>
+            ) : (
+              <button onClick={handlePlay}>Play</button>
+            )}
+          </div>
+          <div className="column">
+            <div className="label">Hora final:</div>
+            {isPlay ? (
+              <button onClick={handlePause}>Pause</button>
+            ) : (
+              <div>{endTime ? endTime.toLocaleTimeString() : ''}</div>
+            )}
+          </div>
+        </div>
+        <div className="row">
+          <div className="column">
+            <div className="label">4x2</div>
+            <input type="checkbox" />
+          </div>
+          <div className="column">
+            <div className="label">4x4</div>
+            <input type="checkbox" />
+          </div>
+        </div>
+      </div>
+
+      <div className="sections">
+        <div className="section">
+          <div className="label">MOTOR</div>
+          <div className="table">
+            <div className="row">
+              <div className="label">Escaneo de motor</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">NIVELES DE ACEITES Y FLUIDOS</div>
+            </div>
+            <div className="row">
+              <div className="label">Nivel de aceite de motor</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Nivel aceite de hidráulico</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">REVISIÓN DE FILTROS</div>
+            </div>
+            <div className="row">
+              <div className="label">Motor</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Cabina</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Revisión de fugas</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Revisión de Refrigerante</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Revisión bandas de Accesorios</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="section">
+          <div className="label">FRENOS</div>
+          <div className="table">
+            <div className="row">
+              <div className="label">Pastillas de freno delanteras</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Zapatas de frenos</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Pastillas de frenos traseras</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Líquido de frenos</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Discos</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Tambores</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Bufas</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="section">
+          <div className="label">SUSPENSIÓN</div>
+          <div className="table">
+            <div className="row">
+              <div className="label">Amortiguadores</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Frontales</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Traseros</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Soportes de amortiguadores</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Espirales</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Tijeras</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Rótulas</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Barra estabilizadora</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Brazo loco/derecho</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Brazo Pitman/ timón</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Bujes media luna</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Bujes grandes de tijera</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Bujes pequeños de tijera</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="section">
+          <div className="label">DIRECCIÓN</div>
+          <div className="table">
+            <div className="row">
+              <div className="label">Puntas de cremayera</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Puntas de dirección</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Brazo loco/derecho</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Brazo Picman/ timón</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Barra central</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Punta de flecha / caja</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Flecha completa: Corta</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Larga</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">Punta de flecha / rueda</div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+              <div className="cell">
+                <input type="checkbox" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="section">
+          <div className="label">OTROS</div>
+          <div className="table">
+            <div className="row">
+              <div className="cell">
+                <textarea />
+              </div>
+            </div>
+            <div className="row">
+              <div className="cell">
+                <textarea />
+              </div>
+            </div>
+            <div className="row">
+              <div className="cell">
+                <textarea />
+              </div>
+            </div>
+            <div className="row">
+              <div className="cell">
+                <textarea />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="logos">
+        <div className="logo">
+          <img src="https://www.toyota.com/img/global/logo-white.svg" alt="Toyota" />
+        </div>
+        <div className="logo">
+          <img src="https://www.mercedes-benz.com/content/dam/mercedes-benz/global/footer/footer-icons/logo-mercedes-benz.svg" alt="Mercedes" />
+        </div>
+        <div className="logo">
+          <img src="https://www.honda.com/assets/images/global-logo.svg" alt="Honda" />
+        </div>
+        <div className="logo">
+          <img src="https://www.kia.com/content/dam/kia/global/common/assets/images/common/logo/kia_logo_white.svg" alt="KIA" />
+        </div>
+        <div className="logo">
+          <img src="https://www.hyundai.com/content/dam/hyundai/global/header/global-header/logo/global-logo-white.svg" alt="Hyundai" />
+        </div>
+        <div className="logo">
+          <img src="https://www.ford.com/content/dam/ford/brand/logos/ford-logo.svg" alt="Ford" />
+        </div>
+        <div className="logo">
+          <img src="https://www.nissan-global.com/EN/BRAND/ABOUT_NISSAN/BRAND_IDENTITY/logo.png" alt="Nissan" />
+        </div>
+        <div className="logo">
+          <img src="https://www.jeep.com/content/dam/jeep/na/us/2023/us_jeep_logo.svg" alt="Jeep" />
+        </div>
+        <div className="logo">
+          <img src="https://www.suzuki.com/content/dam/suzuki/global/header/logo.svg" alt="Suzuki" />
+        </div>
+        <div className="logo">
+          <img src="https://www.mitsubishi-motors.com/en/company/about-mitsubishi-motors/corporate-identity/logo.png" alt="Mitsubishi" />
+        </div>
+        <div className="logo">
+          <img src="https://www.subaru.com/assets/images/global-logo.svg" alt="Subaru" />
+        </div>
+        <div className="logo">
+          <img src="https://www.chevrolet.com/content/dam/chevrolet/na/us/2022/assets/global/logo/svg/chevrolet-logo-white.svg" alt="Chevrolet" />
+        </div>
+        <div className="logo">
+          <img src="https://www.dodge.com/content/dam/dodge/na/us/2022/assets/global/logo/svg/dodge-logo-white.svg" alt="Dodge" />
+        </div>
+        <div className="logo">
+          <img src="https://www.jmc.com.cn/images/index/logo_white.png" alt="JMC" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
